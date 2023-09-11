@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <title>10. Simple Login Form with Authentication</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+    
+        .navbar {
+            background-color: #343a40;
+        }
+    
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+        }
+    
+        .navbar-brand:hover {
+            color: #17a2b8;
+        }
+    
+        .navbar-toggler-icon {
+            background-color: white;
+        }
+    
+        .nav-link {
+            color: white;
+        }
+    
+        .nav-link:hover {
+            color: #17a2b8;
+        }
+    
+      
+    </style>
+    
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html"> 10. Simple Login Form with Authentication
+             </a>
+        </div>
+    </nav>
+    
+
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username">
+        <br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password">
+        <br><br>
+        <button type="button" id="loginBtn">Login</button>
+    </form>
+
+    <script>
+        // Function to handle login button click
+        document.getElementById("loginBtn").addEventListener("click", function () {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Check if the username and password match the expected values
+            if (username === "admin" && password === "password") {
+                alert("Login Successful");
+            } else {
+                alert("Login Failed");
+            }
+        });
+    </script>
+
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"
+  ></script>
+</body>
+</html>

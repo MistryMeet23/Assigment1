@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <title>4. Small Calculator for Square, Square Root, and Factorial</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+    
+        .navbar {
+            background-color: #343a40;
+        }
+    
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+        }
+    
+        .navbar-brand:hover {
+            color: #17a2b8;
+        }
+    
+        .navbar-toggler-icon {
+            background-color: white;
+        }
+    
+        .nav-link {
+            color: white;
+        }
+    
+        .nav-link:hover {
+            color: #17a2b8;
+        }
+    
+        /* Style for Calculator */
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+    
+        label {
+            font-weight: bold;
+        }
+    
+        input[type="number"] {
+            width: 70%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    
+        button {
+            width: 98%;
+            padding: 15px;
+            background-color: #343a40;
+            color: white;
+            font-weight: bold;
+            align-items: center;
+            border: none;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    
+        button:hover {
+            background-color: #17a2b8;
+        }
+    
+        button#squareBtn {
+            margin-right: 5px;
+        }
+    
+        button#squareRootBtn {
+            margin-right: 5px;
+        }
+    </style>
+    
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html"> 4. Small Calculator for Square, Square Root, and Factorial
+             </a>
+        </div>
+      </nav>
+
+    
+      <h2>Calculator</h2>
+      <label for="number">Enter a number: </label>
+      <input type="number" id="number" placeholder="Enter a number">
+      <br><br>
+      <button id="squareBtn">Square</button>
+      <button id="squareRootBtn">Square Root</button>
+      <button id="factorialBtn">Factorial</button>
+
+      
+    <script>
+        // Function to calculate the square of a number
+        function calculateSquare() {
+            const number = parseFloat(document.getElementById("number").value);
+            if (!isNaN(number)) {
+                const result = number * number;
+                alert(`Square of ${number} is ${result}`);
+            } else {
+                alert("Please enter a valid number.");
+            }
+        }
+
+        // Function to calculate the square root of a number
+        function calculateSquareRoot() {
+            const number = parseFloat(document.getElementById("number").value);
+            if (!isNaN(number)) {
+                if (number >= 0) {
+                    const result = Math.sqrt(number);
+                    alert(`Square root of ${number} is ${result}`);
+                } else {
+                    alert("Please enter a non-negative number.");
+                }
+            } else {
+                alert("Please enter a valid number.");
+            }
+        }
+
+        // Function to calculate the factorial of a number
+        function calculateFactorial() {
+            const number = parseInt(document.getElementById("number").value);
+            if (!isNaN(number)) {
+                if (number >= 0) {
+                    let result = 1;
+                    for (let i = 2; i <= number; i++) {
+                        result *= i;
+                    }
+                    alert(`Factorial of ${number} is ${result}`);
+                } else {
+                    alert("Please enter a non-negative integer.");
+                }
+            } else {
+                alert("Please enter a valid number.");
+            }
+        }
+
+        // Add event listeners to the buttons
+        document.getElementById("squareBtn").addEventListener("click", calculateSquare);
+        document.getElementById("squareRootBtn").addEventListener("click", calculateSquareRoot);
+        document.getElementById("factorialBtn").addEventListener("click", calculateFactorial);
+    </script>
+
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"
+  ></script>
+</body>
+</html>

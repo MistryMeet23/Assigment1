@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <title>6. Online Stopwatch with Start, Stop, and Reset Controls</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+    
+        .navbar {
+            background-color: #343a40;
+        }
+    
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+        }
+    
+        .navbar-brand:hover {
+            color: #17a2b8;
+        }
+    
+        .navbar-toggler-icon {
+            background-color: white;
+        }
+    
+        .nav-link {
+            color: white;
+        }
+    
+        .nav-link:hover {
+            color: #17a2b8;
+        }
+    
+        #stopwatch {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        #controls {
+            margin-top: 10px;
+        }
+
+        #startBtn, #stopBtn, #resetBtn {
+            font-size: 16px;
+            padding: 5px 10px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+      
+    </style>
+    
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html"> 6. Online Stopwatch with Start, Stop, and Reset Controls
+             </a>
+        </div>
+    </nav>
+    <div id="stopwatch">00:00:00</div>
+    <div id="controls">
+        <button id="startBtn">Start</button>
+        <button id="stopBtn">Stop</button>
+        <button id="resetBtn">Reset</button>
+    </div>
+<script>
+    let timerInterval;
+    let isRunning = false;
+    let milliseconds = 0, seconds = 0, minutes = 0;
+
+    function formatTime(ms, sec, min) {
+        return `${min < 10 ? '0' : ''}${min}:${sec < 10 ? '0' : ''}${sec}:${ms < 10 ? '00' : ms < 100 ? '0' : ''}${ms}`;
+    }
+
+    function startTimer() {
+        if (!isRunning) {
+            isRunning = true;
+            timerInterval = setInterval(function() {
+                milliseconds += 10;
+                if (milliseconds === 1000) {
+                    milliseconds = 0;
+                    seconds++;
+                    if (seconds === 60) {
+                        seconds = 0;
+                        minutes++;
+                    }
+                }
+                document.getElementById("stopwatch").textContent = formatTime(milliseconds, seconds, minutes);
+            }, 10);
+        }
+    }
+
+    function stopTimer() {
+        clearInterval(timerInterval);
+        isRunning = false;
+    }
+
+    function resetTimer() {
+        clearInterval(timerInterval);
+        isRunning = false;
+        milliseconds = 0;
+        seconds = 0;
+        minutes = 0;
+        document.getElementById("stopwatch").textContent = "00:00:00";
+    }
+
+    document.getElementById("startBtn").addEventListener("click", startTimer);
+    document.getElementById("stopBtn").addEventListener("click", stopTimer);
+    document.getElementById("resetBtn").addEventListener("click", resetTimer);
+</script>
+
+
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"
+  ></script>
+</body>
+</html>
